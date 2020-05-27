@@ -13,7 +13,9 @@
                         {{ $user->username }}
                     </h4>
                 </div>
-                <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                @can('follow', $user->profile)
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                @endcan
                 @can('update', $user->profile)
                     <a href="/post/create">Add new post</a>
                 @endcan
